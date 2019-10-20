@@ -36,6 +36,7 @@ my %feature = (
     fc              => 'fc',
     signatures      => 'signatures',
     isa             => 'isa',
+    noindirect      => 'noindirect',
 );
 
 # NOTE: If a feature is ever enabled in a non-contiguous range of Perl
