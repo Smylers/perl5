@@ -36,7 +36,7 @@ my %feature = (
     fc              => 'fc',
     signatures      => 'signatures',
     isa             => 'isa',
-    noindirect      => 'noindirect',
+    indirect        => 'indirect',
 );
 
 # NOTE: If a feature is ever enabled in a non-contiguous range of Perl
@@ -46,29 +46,29 @@ my %feature = (
 # 5.odd implies the next 5.even, but an explicit 5.even can override it.
 my %feature_bundle = (
      all     => [ keys %feature ],
-     default =>	[qw()],
-    "5.9.5"  =>	[qw(say state switch)],
-    "5.10"   =>	[qw(say state switch)],
-    "5.11"   =>	[qw(say state switch unicode_strings)],
-    "5.13"   =>	[qw(say state switch unicode_strings)],
+     default =>	[qw(indirect)],
+    "5.9.5"  =>	[qw(say state switch indirect)],
+    "5.10"   =>	[qw(say state switch indirect)],
+    "5.11"   =>	[qw(say state switch unicode_strings indirect)],
+    "5.13"   =>	[qw(say state switch unicode_strings indirect)],
     "5.15"   =>	[qw(say state switch unicode_strings unicode_eval
-		    evalbytes current_sub fc)],
+		    evalbytes current_sub fc indirect)],
     "5.17"   =>	[qw(say state switch unicode_strings unicode_eval
-		    evalbytes current_sub fc)],
+		    evalbytes current_sub fc indirect)],
     "5.19"   =>	[qw(say state switch unicode_strings unicode_eval
-		    evalbytes current_sub fc)],
+		    evalbytes current_sub fc indirect)],
     "5.21"   =>	[qw(say state switch unicode_strings unicode_eval
-		    evalbytes current_sub fc)],
+		    evalbytes current_sub fc indirect)],
     "5.23"   =>	[qw(say state switch unicode_strings unicode_eval
-		    evalbytes current_sub fc postderef_qq)],
+		    evalbytes current_sub fc postderef_qq indirect)],
     "5.25"   =>	[qw(say state switch unicode_strings unicode_eval
-		    evalbytes current_sub fc postderef_qq)],
+		    evalbytes current_sub fc postderef_qq indirect)],
     "5.27"   =>	[qw(say state switch unicode_strings unicode_eval
-		    evalbytes current_sub fc postderef_qq bitwise)],
+		    evalbytes current_sub fc postderef_qq bitwise indirect)],
     "5.29"   =>	[qw(say state switch unicode_strings unicode_eval
-		    evalbytes current_sub fc postderef_qq bitwise)],
+		    evalbytes current_sub fc postderef_qq bitwise indirect)],
     "5.31"   =>	[qw(say state switch unicode_strings unicode_eval
-		    evalbytes current_sub fc postderef_qq bitwise)],
+		    evalbytes current_sub fc postderef_qq bitwise indirect)],
 );
 
 my @noops = qw( postderef lexical_subs );

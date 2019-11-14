@@ -14,8 +14,8 @@ our %feature = (
     state           => 'feature_state',
     switch          => 'feature_switch',
     bitwise         => 'feature_bitwise',
+    indirect        => 'feature_indirect',
     evalbytes       => 'feature_evalbytes',
-    noindirect      => 'feature_noindirect',
     signatures      => 'feature_signatures',
     current_sub     => 'feature___SUB__',
     refaliasing     => 'feature_refaliasing',
@@ -26,13 +26,13 @@ our %feature = (
 );
 
 our %feature_bundle = (
-    "5.10"    => [qw(say state switch)],
-    "5.11"    => [qw(say state switch unicode_strings)],
-    "5.15"    => [qw(current_sub evalbytes fc say state switch unicode_eval unicode_strings)],
-    "5.23"    => [qw(current_sub evalbytes fc postderef_qq say state switch unicode_eval unicode_strings)],
-    "5.27"    => [qw(bitwise current_sub evalbytes fc postderef_qq say state switch unicode_eval unicode_strings)],
-    "all"     => [qw(bitwise current_sub declared_refs evalbytes fc isa noindirect postderef_qq refaliasing say signatures state switch unicode_eval unicode_strings)],
-    "default" => [qw()],
+    "5.10"    => [qw(indirect say state switch)],
+    "5.11"    => [qw(indirect say state switch unicode_strings)],
+    "5.15"    => [qw(current_sub evalbytes fc indirect say state switch unicode_eval unicode_strings)],
+    "5.23"    => [qw(current_sub evalbytes fc indirect postderef_qq say state switch unicode_eval unicode_strings)],
+    "5.27"    => [qw(bitwise current_sub evalbytes fc indirect postderef_qq say state switch unicode_eval unicode_strings)],
+    "all"     => [qw(bitwise current_sub declared_refs evalbytes fc indirect isa postderef_qq refaliasing say signatures state switch unicode_eval unicode_strings)],
+    "default" => [qw(indirect)],
 );
 
 $feature_bundle{"5.12"} = $feature_bundle{"5.11"};
@@ -372,45 +372,49 @@ The following feature bundles are available:
 
   bundle    features included
   --------- -----------------
-  :default
+  :default  indirect
 
-  :5.10     say state switch
+  :5.10     say state switch indirect
 
-  :5.12     say state switch unicode_strings
+  :5.12     say state switch unicode_strings indirect
 
-  :5.14     say state switch unicode_strings
+  :5.14     say state switch unicode_strings indirect
 
   :5.16     say state switch unicode_strings
             unicode_eval evalbytes current_sub fc
+            indirect
 
   :5.18     say state switch unicode_strings
             unicode_eval evalbytes current_sub fc
+            indirect
 
   :5.20     say state switch unicode_strings
             unicode_eval evalbytes current_sub fc
+            indirect
 
   :5.22     say state switch unicode_strings
             unicode_eval evalbytes current_sub fc
+            indirect
 
   :5.24     say state switch unicode_strings
             unicode_eval evalbytes current_sub fc
-            postderef_qq
+            postderef_qq indirect
 
   :5.26     say state switch unicode_strings
             unicode_eval evalbytes current_sub fc
-            postderef_qq
+            postderef_qq indirect
 
   :5.28     say state switch unicode_strings
             unicode_eval evalbytes current_sub fc
-            postderef_qq bitwise
+            postderef_qq bitwise indirect
 
   :5.30     say state switch unicode_strings
             unicode_eval evalbytes current_sub fc
-            postderef_qq bitwise
+            postderef_qq bitwise indirect
 
   :5.32     say state switch unicode_strings
             unicode_eval evalbytes current_sub fc
-            postderef_qq bitwise
+            postderef_qq bitwise indirect
 
 The C<:default> bundle represents the feature set that is enabled before
 any C<use feature> or C<no feature> declaration.

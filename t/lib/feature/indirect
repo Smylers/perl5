@@ -1,7 +1,7 @@
-Test noindirect feature
+Test no feature indirect.
 
 __END__
-# NAME feature noindirect
+# NAME feature indirect
 use feature 'say';
 package Foo {
   sub new { bless {}, shift }
@@ -14,7 +14,7 @@ say STDERR "Hello";
 exec $foox "foo", "bar";
 system $foox "foo", "bar";
 my $x = new Foo;
-use feature "noindirect";
+no feature "indirect";
 print STDERR "Hello\n";
 printf STDERR "Test%s\n", "x";
 say STDERR "Hello";

@@ -4410,7 +4410,7 @@ S_intuit_method(pTHX_ char *start, SV *ioname, CV *cv)
 				    SVt_PVCV);
         if ((indirgv && SvTYPE(indirgv) != SVt_NULL
              && (!isGV(indirgv) || GvCVu(indirgv)))
-            || FEATURE_NOINDIRECT_IS_ENABLED)
+            || !FEATURE_INDIRECT_IS_ENABLED)
 	    return 0;
 	/* filehandle or package name makes it a method */
 	if (!cv || GvIO(indirgv) || gv_stashpvn(tmpbuf, len, UTF ? SVf_UTF8 : 0)) {
